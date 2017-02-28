@@ -17,3 +17,6 @@ push: image
 
 run: image
 	docker run --rm --publish=$(PORT):$(PORT) --name=$(shell basename $(IMAGE)) $(IMAGE):$(VERSION)
+
+debug: image
+	docker run --rm --name=$(shell basename $(IMAGE)) --tty --interactive $(IMAGE):$(VERSION) sh

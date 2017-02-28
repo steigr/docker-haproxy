@@ -12,5 +12,8 @@ image:
 	docker build --tag=$(IMAGE):$(VERSION) --file=Dockerfile.build .
 	@rm Dockerfile.build
 
+push: image
+	docker push $(IMAGE):$(VERSION)
+
 run: image
 	docker run --rm --publish=$(PORT):$(PORT) --name=$(shell basename $(IMAGE)) $(IMAGE):$(VERSION)
